@@ -1,4 +1,6 @@
-#pragma once
+#ifndef QUEUES_HPP
+#define QUEUES_HPP
+
 #include <iostream>
 
 namespace queues
@@ -33,3 +35,4 @@ namespace queues
     };
     
 } // namespace queues
+#endif
