@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.22)
+
+project(cpp-tutorial)
+
+add_compile_options(-std=c++17)
+add_compile_options(-O3)
+include_directories(
+  include
+  "${PROJECT_SOURCE_DIR}/include/**"
+  "${PROJECT_SOURCE_DIR}/src/**"
+)
+
+add_library( queues_lib
+  include/queues.hpp
+  src/queues.cpp
+)
+
+
+add_executable(main main.cpp)
+target_link_libraries(main queues_lib)
