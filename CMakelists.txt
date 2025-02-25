@@ -2,21 +2,16 @@ cmake_minimum_required(VERSION 3.22)
 
 project(cpp-tutorial CXX)  # Ensuring C++ is used
 
-add_compile_options(-std=c++17)
-# Set global flags (do not include -std=c++17 globally)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -arch arm64")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -arch arm64")
+add_compile_options(-std=c++17 -O3 -arch arm64)
 
 include_directories(
   include
-  "${PROJECT_SOURCE_DIR}/include"
-  "${PROJECT_SOURCE_DIR}/src"
+  "${PROJECT_SOURCE_DIR}/include/**"
+  "${PROJECT_SOURCE_DIR}/src/**"
   "${PROJECT_SOURCE_DIR}/include/linked_list"
   "${PROJECT_SOURCE_DIR}/src/linked_list"
 )
 
-# Add GLFW as a subdirectory
-# add_subdirectory(glfw)
 
 # Add libraries
 add_library(queues_lib
@@ -29,24 +24,7 @@ add_library(gui_lib
   src/gui.cpp
 )
 
-# add_library(imgui
-#   imgui/imgui.cpp
-#   imgui/imgui_draw.cpp
-#   imgui/imgui_tables.cpp
-#   imgui/imgui_widgets.cpp
-# )
-
-add_library(linked_list_lib
-  include/linked_list/link.hpp
-  src/linked_list/link.cpp
-)
-
-# add_library(node_lib
-#   include/node.hpp
-#   src/node.cpp
-# )
-# Create the executable
 add_executable(main main.cpp)
 
 # Link libraries
-target_link_libraries(main queues_lib gui_lib linked_list_lib)
+target_link_libraries(main queues_lib gui_lib)
