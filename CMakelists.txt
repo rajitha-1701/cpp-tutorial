@@ -40,8 +40,13 @@ add_library(linked_list_lib
   include/linked_list/link.hpp
   src/linked_list/link.cpp
 )
+
+add_library(node_lib
+  include/node.hpp
+  src/node.cpp
+)
 # Create the executable
 add_executable(main main.cpp)
 
 # Link libraries
-target_link_libraries(main queues_lib gui_lib linked_list_lib)
+target_link_libraries(main queues_lib gui_lib linked_list_lib node_lib)
