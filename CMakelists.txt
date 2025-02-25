@@ -1,20 +1,40 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(cpp-tutorial)
+project(cpp-tutorial CXX)  # Ensuring C++ is used
 
+# Add compile options for C++
 add_compile_options(-std=c++17)
 add_compile_options(-O3)
+add_compile_options(-arch arm64)
+
+# Include directories
 include_directories(
   include
-  "${PROJECT_SOURCE_DIR}/include/**"
-  "${PROJECT_SOURCE_DIR}/src/**"
+  "${PROJECT_SOURCE_DIR}/imgui"
+  "${PROJECT_SOURCE_DIR}/include"
+  "${PROJECT_SOURCE_DIR}/src"
 )
-
-add_library( queues_lib
+add_subdirectory(glfw)
+# Add libraries
+add_library(queues_lib
   include/queues.hpp
   src/queues.cpp
 )
 
+add_library(gui_lib
+  include/gui.hpp
+  src/gui.cpp
+)
 
+add_library(imgui
+  imgui/imgui.cpp
+  imgui/imgui_draw.cpp
+  imgui/imgui_tables.cpp
+  imgui/imgui_widgets.cpp
+)
+
+# Create the executable
 add_executable(main main.cpp)
-target_link_libraries(main queues_lib)
+
+# Link libraries
+target_link_libraries(main glfw imgui queues_lib gui_lib)
