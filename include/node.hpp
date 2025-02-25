@@ -13,24 +13,11 @@ namespace dsa
         std::shared_ptr<node<T> > next;
     
     public:
-        inline node(){
-            next = nullptr;
-        }
-
-        inline std::shared_ptr<node> & getPointer(){
-            return next;
-        }   
-        inline void setPointer(std::shared_ptr<T> incoming_pointer){
-            next = incoming_pointer;
-        }
-
-        inline T getData(){
-            return data;
-        }
-
-        inline void setData(T incoming_data){
-            data = incoming_data;
-        }
+        node();
+        std::shared_ptr<node<T> > & getPointer();
+        void setPointer(std::shared_ptr<node<T> > incoming_pointer);
+        T getData();
+        void setData(T incoming_data);
     };
     
 } // namespace dsa

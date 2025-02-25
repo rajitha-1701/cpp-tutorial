@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <memory>
-#include "node.hpp"
+#include <node.hpp>
 
 namespace dsa
 {
@@ -17,7 +17,6 @@ namespace dsa
             linked_list();
             int add_node(T data);
             int display();
-            int remove_node();
     };
 
 } // namespace dsa
