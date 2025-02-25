@@ -2,19 +2,20 @@ cmake_minimum_required(VERSION 3.22)
 
 project(cpp-tutorial CXX)  # Ensuring C++ is used
 
-# Add compile options for C++
-add_compile_options(-std=c++17)
-add_compile_options(-O3)
-add_compile_options(-arch arm64)
+# Set global flags (do not include -std=c++17 globally)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -arch arm64")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -arch arm64")
 
-# Include directories
 include_directories(
   include
   "${PROJECT_SOURCE_DIR}/imgui"
   "${PROJECT_SOURCE_DIR}/include"
   "${PROJECT_SOURCE_DIR}/src"
 )
+
+# Add GLFW as a subdirectory
 add_subdirectory(glfw)
+
 # Add libraries
 add_library(queues_lib
   include/queues.hpp
@@ -38,3 +39,9 @@ add_executable(main main.cpp)
 
 # Link libraries
 target_link_libraries(main glfw imgui queues_lib gui_lib)
+
+# Apply target-specific compile options ONLY to C++ targets
+target_compile_options(queues_lib PRIVATE -std=c++17)
+target_compile_options(gui_lib PRIVATE -std=c++17)
+target_compile_options(imgui PRIVATE -std=c++17)
+target_compile_options(main PRIVATE -std=c++17)
