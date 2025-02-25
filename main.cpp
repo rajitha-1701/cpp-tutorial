@@ -1,5 +1,7 @@
 #include "queues.hpp"
 #include "node.hpp"
+#include "link.hpp"
+
 
 using namespace dsa;
 int main(){
@@ -13,8 +15,10 @@ int main(){
     q.pop();
     q.display();
     
-    std::shared_ptr<node<int>> n(new node<int>());
-    n->setData(10);
-    std::cout<<n->getData()<<std::endl;
+    linked_list<int> l;
+    l.add_node(10);
+    l.add_node(11);
+    l.add_node(12);
+    l.display();
     return 0;
 }
