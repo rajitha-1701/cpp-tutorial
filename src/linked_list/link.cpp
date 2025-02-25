@@ -1,6 +1,7 @@
 #include "link.hpp"
 #include "node.hpp"
 
+using namespace dsa;
 template <typename T>
 dsa::linked_list<T>::linked_list()
 {
@@ -12,7 +13,8 @@ template <typename T>
 int dsa::linked_list<T>::add_node(T data)
 {
     std::shared_ptr<node<T> > temp = std::make_shared<node<T> >();
-    temp->setData(data);
+    temp->node<T>::setData(data);
+    temp->node<T>::setPointer(nullptr);
 
     if (head == nullptr)
     {
@@ -21,7 +23,7 @@ int dsa::linked_list<T>::add_node(T data)
     }
     else
     {
-        tail->next = temp;
+        tail->
         tail = temp;
     }
     return 0;
@@ -30,11 +32,11 @@ int dsa::linked_list<T>::add_node(T data)
 template <typename T>
 int dsa::linked_list<T>::display()
 {
-    std::shared_ptr<node<T> > temp = head;
-    while (temp != nullptr)
-    {
-        std::cout << temp->getData() << std::endl;
-        temp = temp->next;
-    }
-    return 0;
+    // std::shared_ptr<node<T> > temp = head;
+    // while (temp != nullptr)
+    // {
+    //     std::cout << temp->getData() << std::endl;
+    //     temp = temp->getPointer();
+    // }
+    // return 0;
 }
