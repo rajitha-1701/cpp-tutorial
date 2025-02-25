@@ -6,6 +6,12 @@ dsa::node<T>::node(){
 }
 
 template <typename T>
+std::shared_ptr<dsa::node<T> > dsa::node<T>::getPointer()
+{
+    return next;
+}
+
+template <typename T>
 void dsa::node<T>::setPointer(std::shared_ptr<node<T> > incoming_pointer)
 {
     next = incoming_pointer;
