@@ -15,10 +15,10 @@ int main(){
     q.pop();
     q.display();
     
-    linked_list<int> l;
-    l.add_node(10);
-    l.add_node(11);
-    l.add_node(12);
+    linked_list<char> l;
+    l.add_node('a');
+    l.add_node('b');
+    l.add_node('c');
     l.display();
     return 0;
 }

@@ -15,7 +15,9 @@ namespace dsa
         std::shared_ptr<node<T>> tail;
     
     public:
-        linked_list() : head(nullptr), tail(nullptr) {}  // Constructor definition
+        linked_list() : head(nullptr), tail(nullptr) {
+            std::cout << "Linked List created\n";
+        }  // Constructor definition
 
         int add_node(T data)
         {
@@ -39,9 +41,10 @@ namespace dsa
         int display()
         {
             std::shared_ptr<node<T>> temp = head;
+            std::cout << "Linked List: ";
             while (temp != nullptr)
             {
-                std::cout << temp->getData() << std::endl;
+                std::cout << temp->getData() << '\t';
                 temp = temp->getPointer();
             }
             return 0;
