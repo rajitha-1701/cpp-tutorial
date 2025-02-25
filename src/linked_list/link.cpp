@@ -1,5 +1,6 @@
 #include "link.hpp"
 #include "node.hpp"
+
 template <typename T>
 dsa::linked_list<T>::linked_list()
 {

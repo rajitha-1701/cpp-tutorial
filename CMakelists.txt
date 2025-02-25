@@ -12,6 +12,7 @@ include_directories(
   "${PROJECT_SOURCE_DIR}/include"
   "${PROJECT_SOURCE_DIR}/src"
   "${PROJECT_SOURCE_DIR}/include/linked_list"
+  "${PROJECT_SOURCE_DIR}/src/linked_list"
 )
 
 # Add GLFW as a subdirectory
@@ -28,12 +29,12 @@ add_library(gui_lib
   src/gui.cpp
 )
 
-add_library(imgui
-  imgui/imgui.cpp
-  imgui/imgui_draw.cpp
-  imgui/imgui_tables.cpp
-  imgui/imgui_widgets.cpp
-)
+# add_library(imgui
+#   imgui/imgui.cpp
+#   imgui/imgui_draw.cpp
+#   imgui/imgui_tables.cpp
+#   imgui/imgui_widgets.cpp
+# )
 
 add_library(linked_list_lib
   include/linked_list/link.hpp
@@ -43,10 +44,4 @@ add_library(linked_list_lib
 add_executable(main main.cpp)
 
 # Link libraries
-target_link_libraries(main glfw imgui queues_lib gui_lib linked_list_lib)
-
-# Apply target-specific compile options ONLY to C++ targets
-target_compile_options(queues_lib PRIVATE -std=c++17)
-target_compile_options(gui_lib PRIVATE -std=c++17)
-target_compile_options(imgui PRIVATE -std=c++17)
-target_compile_options(main PRIVATE -std=c++17)
+target_link_libraries(main queues_lib gui_lib linked_list_lib)

@@ -23,9 +23,11 @@ namespace dsa
         inline void setPointer(std::shared_ptr<T> incoming_pointer){
             next = incoming_pointer;
         }
+
         inline T getData(){
             return data;
         }
+
         inline void setData(T incoming_data){
             data = incoming_data;
         }
